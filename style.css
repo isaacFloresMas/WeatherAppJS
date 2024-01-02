@@ -3,7 +3,14 @@
 }
 
 body{
-    background-color: #293251;
+    background-color: #323953;
+}
+
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .container{
@@ -15,6 +22,9 @@ body{
     
     border-radius: 10px;
     padding-bottom : 50px;
+
+    justify-content: center;
+    align-items: center;
 }
 
 .app-title{
@@ -38,7 +48,7 @@ body{
 
 .notification p{
     color: #721c24;
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin: 0;
     text-align: center;
     padding: 10px 0;
@@ -74,8 +84,9 @@ body{
     cursor: pointer;
 }
 
-.temperature-value p:hover{
-    
+.temperature-value:hover p,
+.temperature-value:hover span {
+  color: #4426b0;
 }
 
 .temperature-value span{
