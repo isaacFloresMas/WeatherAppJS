@@ -9,9 +9,9 @@ const notifcationElement = document.querySelector(".notification");
 const KELVIN = 273;
 const key = "82005d27a116c2880c8f0fcb866998a0";
 
-const weather = {};
+const wthr = {};
 
-weather.temperature = {
+wthr.temperature = {
     unit: "celsius"
 }
 
@@ -48,11 +48,11 @@ function getWeather(latitude, longitude) {
             return data;
         })
         .then(function(data) {
-            weather.temperature.value = Math.floor(data.main.temp - KELVIN);
-            weather.description = data.weather[0].description;
-            weather.iconId = data.weather[0].icon;
-            weather.city = data.name;
-            weather.country = data.sys.country;
+            wthr.temperature.value = Math.floor(data.main.temp - KELVIN);
+            wthr.description = data.weather[0].description;
+            wthr.iconId = data.weather[0].icon;
+            wthr.city = data.name;
+            wthr.country = data.sys.country;
         })
         .then(function() {
             displayWeather();
@@ -61,10 +61,10 @@ function getWeather(latitude, longitude) {
 
 // DISPLAY WEATHER UI
 function displayWeather() {
-    iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
-    tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
-    descElement.innerHTML = weather.description;
-    locationElement.innerHTML = `${weather.city}, ${weather.country}`;
+    iconElement.innerHTML = `<img src="icons/${wthr.iconId}.png"/>`;
+    tempElement.innerHTML = `${wthr.temperature.value}°<span>C</span>`;
+    descElement.innerHTML = wthr.description;
+    locationElement.innerHTML = `${wthr.city}, ${wthr.country}`;
 }
 
 // C to F
@@ -74,16 +74,16 @@ function celsiusToFar(temp) {
 
 // WHEN USER CLICKS TEMP ELEMENT
 tempElement.addEventListener("click" , function() {
-    if (weather.temperature.value == undefined) return;
+    if (wthr.temperature.value == undefined) return;
 
-    if (weather.temperature.unit == "celsius") {
-        let fahrenheit = celsiusToFar(weather.temperature.value);
+    if (wthr.temperature.unit == "celsius") {
+        let fahrenheit = celsiusToFar(wthr.temperature.value);
         fahrenheit = Math.floor(fahrenheit);
 
         tempElement.innerHTML = `${fahrenheit}°<span>F</span>`;
-        weather.temperature.unit = "fahrenheit";
+        wthr.temperature.unit = "fahrenheit";
     } else {
-        tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
-        weather.temperature.unit = "celsius";
+        tempElement.innerHTML = `${wthr.temperature.value}°<span>C</span>`;
+        wthr.temperature.unit = "celsius";
     } 
 });
