@@ -39,7 +39,7 @@ function showError(error) {
     document.body.style.backgroundColor = "#472d30";
 }
 
-// GET WEATHER FROM API
+// GET WEATHER FROM API CALL
 function getWeather(latitude, longitude) {
     let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
     fetch(api)
@@ -59,7 +59,7 @@ function getWeather(latitude, longitude) {
         });
 }
 
-// DISPLAY WEATHER UI
+// DISPLAY WEATHER UI ELEMENTS
 function displayWeather() {
     iconElement.innerHTML = `<img src="icons/${wthr.iconId}.png"/>`;
     tempElement.innerHTML = `${wthr.temperature.value}°<span>C</span>`;
